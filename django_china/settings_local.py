@@ -134,7 +134,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'profiles',
     'homepage',
-    'sites',
+    'coolsites',
 
     #ext
     'south',

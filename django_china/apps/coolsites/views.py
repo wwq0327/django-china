@@ -8,8 +8,8 @@ from django.core.urlresolvers import reverse
 
 from django.contrib.auth.models import User
 
-from sites.models import SiteCategory, CoolSites
-from sites.forms import SiteCategoryForm, CoolSitesForm
+from coolsites.models import SiteCategory, CoolSites
+from coolsites.forms import SiteCategoryForm, CoolSitesForm
 
 def index(request):
     """酷站首页面"""
@@ -24,6 +24,6 @@ def create(request):
 
     form = CoolSitesForm()
 
-    return render_to_response('sites/create.html',
+    return render_to_response('coolsites/create.html',
                               {'form': form},
                               context_instance=RequestContext(request))
