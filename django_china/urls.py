@@ -20,7 +20,7 @@ urlpatterns = patterns('',
 urlpatterns += patterns('',
                         url(r'^accounts/', include('profiles.urls')),
                         url(r'^$', include('homepage.urls')),
-                        url(r'^sites/', include('sites.urls')),
+                        url(r'^sites/', include('coolsites.urls')),
 
 )
 media_url = settings.MEDIA_URL.lstrip('/').rstrip('/')

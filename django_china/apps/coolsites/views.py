@@ -14,7 +14,7 @@ from coolsites.forms import SiteCategoryForm, CoolSitesForm
 def index(request):
     """酷站首页面"""
 
-    return render_to_response('sites/index.html',
+    return render_to_response('coolsites/index.html',
                               {},
                               context_instance=RequestContext(request))
 

@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from sites.models import SiteCategory, CoolSites
+from coolsites.models import SiteCategory, CoolSites
 
 class SiteCategoryForm(forms.ModelForm):
     class Meta:
@@ -20,12 +20,12 @@ class SiteCategoryForm(forms.ModelForm):
 class CoolSitesForm(forms.ModelForm):
     class Meta:
         model = CoolSites
-        fields = ('name', 'sites', 'category', 'about', )
+        fields = ('name', 'site', 'category', 'about', )
 
     def save(self, user):
         model, created = CoolSites.objects.get_or_create(
             name = self.cleaned_data['name'],
-            sites = self.cleaned_data['sites'],
+            sites = self.cleaned_data['site'],
             category = self.cleaned_data['category'],
             about = self.cleaned_data['about'],
             creater = user
