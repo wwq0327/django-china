@@ -1,0 +1,18 @@
+{% extends 'userena/base_userena.html' %}
+{% load i18n %}
+
+{% block title %}完成注册!{% endblock %}
+
+{% block content_title %}<h2>帐号注册</h2>{% endblock %}
+
+{% block content %}
+<p>感谢你注册我们的网站。</p>
+
+{% if userena_activation_required %}
+<p>网站会自动发送到激活邮件到你的注册信箱中。</p>
+<p>我们会在 {{
+  userena_activation_days }} 天内保存你的注册信息。</p>
+{% else  %}
+<p></p>
+{% endif %}
+{% endblock %}

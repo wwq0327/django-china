@@ -1,0 +1,13 @@
+{% load i18n %}{% autoescape off %}
+{% blocktrans with user.username as username %}你好 {{ username }},{% endblocktrans %}
+
+{% blocktrans with site.name as site %}你提交了 {{ site }} 网站邮箱地址的更改请求。{% endblocktrans %}
+
+点击下面的链接来完成邮箱地址变更确认：
+
+{{ protocol }}://{{ site.domain }}{% url userena_email_confirm user.username confirmation_key %}
+
+再次感谢你使用我们的网站！
+
+{{ site.name }}
+{% endautoescape %}

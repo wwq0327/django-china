@@ -1,0 +1,2 @@
+{% load i18n %}
+{% blocktrans with site.name as site %}来自 {{ site }} 的注册激活邮件.{% endblocktrans %}

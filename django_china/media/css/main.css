@@ -1,0 +1,279 @@
+body {
+    background-color: white;
+    color: #333;
+    font-size: 10pt;
+    line-height: 20px;
+    padding: 0;
+    font-style: normal;
+}
+
+/* 框架样式定义 */
+#header {
+    position: relative;
+    padding: 20px 0 12px 0;
+    background: #eee;
+    border-bottom: dotted 1px #ccc;
+}
+
+#nav ul#big_nav {
+    padding-top: 9px;
+    font-size: 12pt;
+}
+
+#nav ul {
+    margin: 0;
+    line-height: 19px;
+    float: right;
+}
+
+#nav ul li {
+    padding-left: 30px;
+    list-style: none;
+    float: left;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: list-item;
+}
+
+#footer {
+    padding: 15px 0 20px 0;
+    background: #eee;
+    border-top: dotted 1px #ccc;
+}
+
+#footer ul li {
+    margin-left: 10px;
+}
+
+#content-title {
+    font-size: 12pt;
+    font-weight: bold;
+    line-height: 30px;
+}
+
+
+.sb_box ul {
+    list-style-type: square;
+    margin-left: 16px;
+    padding: 0;
+}
+
+.sb_box ul li {
+    margin: 0;
+}
+
+.sb_box b {
+    display: block;
+    font-size: 12pt;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    padding: 5px 0;
+}
+
+/* link */
+a {
+    /*color: #0069d6;*/
+    color: black;
+    text-decoration: none;
+    line-height: inherit;
+    font-weight: inherit;
+}
+
+a:hover {
+    color: black;
+    /*color: #00438a;*/
+    text-decoration: underline;
+}
+
+#big_nav a:hover {
+	text-decoration: none;
+	background-color: #ccc;
+}
+
+/* logo */
+#logo {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+
+/* form */
+form p label {
+    display: inline-block;
+    float: left;
+    width: 60px;
+    text-align: right;
+    vertical-align: baseline;
+    margin-right: 12px;
+    line-height: 30px;
+}
+
+.create_form p input{
+    padding: 5px;
+    line-height: 22px;
+    font-size: 12px;
+    border: 1px solid #c9c9c9;
+    width: 65%;
+}
+
+.create_form p textarea {
+    padding: 5px;
+    font-size: 12px;
+    border: 1px solid #c9c9c9;
+    width: 600px;
+    height: 320px;
+}
+
+
+lable {
+    cursor: default;
+}
+
+.remember {
+    margin: 15px 0;
+    zoom: 1;
+}
+
+
+.login {
+    padding: 20px 0;
+}
+
+.login input {
+    width: 240px;
+    padding: 5px;
+    height: 22px;
+    font-size: 14px;
+    vertical-align: middle;
+    border: 1px solid #c9c9c9;
+}
+
+button {
+        font-weight: normal;
+        color: #444;
+        font-size: 16px;
+        line-height: 22px;
+        height: 36px;
+        width: 100px;
+        overflow: visible;
+        text-decoration: center;
+        margin: 0 0 5px 0;
+        padding: 1px 3px;
+        background-color: #feeefe;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        /*float: right;*/
+}
+
+button:hover {
+        background-color: #fff; border: 1px solid #aaa;color: #000
+        -moz-box-shadow: -2px 2px 2px #ccc;
+        box-shadow: -2px 2px 2px #ccc;
+        -webkit-box-shadow: -2px 2px 2px #ccc;
+}
+
+/* feed css */
+.feed_one {
+    padding: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.feed_title {
+    font-size: 12pt;
+    font-weight: bold;
+    border-bottom: 1px dashed #eee;
+    padding: 5px 0
+}
+
+.feed_info {
+    maring: 2px;
+    padding: 2px;
+    background-color: #eee;
+}
+
+.feed_content {
+    margin: 0;
+    padding: 0;
+}
+
+.feed_tag {
+    padding: 5px 0;
+    marging: 5px 0;
+    border-top: 1px dashed #ccc;
+}
+
+
+.feed_content p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+/* pan */
+
+#pan {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+/* tops */
+#topcontrol { width:36px; height:36px; position:absolute; right:-30px;}
+#topcontrol a{ display:block; cursor:pointer; outline:none;}
+
+.share {
+    float: right;
+}
+
+/* clouds */
+#tag-cloud {
+        margin: 10px 0 10px 0;
+
+}
+
+#tag-cloud a {
+    margin: 0 0.2em;
+}
+
+.tag-cloud-0 { font-size: 60%;}
+.tag-cloud-1 { font-size: 90%;}
+.tag-cloud-2 { font-size: 120%;}
+.tag-cloud-3 { font-size: 150%;}
+.tag-cloud-4 { font-size: 180%;}
+.tag-cloud-5 { font-size: 210%;}
+
+/* profile */
+
+.pro_img {
+    margin: 5px 0;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+}
+
+.pro_detail {
+    text-align: right;
+}
+
+#profile-nav {
+    padding: 5px 0;
+}
+
+
+#profile-nav li {
+    margin: 0;
+    padding-right: 20px;
+    list-style-type: none;
+    float: left;
+    font-size: 14px;
+}
+

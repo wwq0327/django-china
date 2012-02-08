@@ -1,0 +1,14 @@
+{% load i18n %}{% autoescape off %}
+{% blocktrans with user.username as username %}你好 {{ username }},{% endblocktrans %}
+
+{% blocktrans with site.name as site %} 欢迎你注册我们的网站： {{ site }}.{% endblocktrans %}
+
+你所注册的帐号还处于未激活状态，点击下面的链接即可完成激活：
+
+{{ protocol }}://{{ site.domain }}{% url userena_activate user.username activation_key %}
+
+感谢使用我们的网站！
+
+
+{{ site.name }}
+{% endautoescape %}
