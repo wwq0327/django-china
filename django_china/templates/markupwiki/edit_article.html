@@ -1,0 +1,33 @@
+{% extends "markupwiki/article.html" %}
+
+{% block article_title %}
+    {% if article %}
+        Editing "{{title}}"
+    {% else %}
+        Creating New Article "{{title}}"
+    {% endif %}
+{% endblock article_title %}
+
+{% block article_meta %}
+    {% if article %}
+        <a href="{% url view_article article.title %}">view article</a> |
+        <a href="{% url article_history article.title %}">view history</a>
+    {% endif %}
+{% endblock %}
+
+{% block article_body %}
+<form method="POST" action=".">
+    {% csrf_token %}
+    <ul>
+        <li>{{form.body}}</li>
+        <li>{{form.comment.label_tag}} {{ form.comment }} </li>
+        <li>{{form.body_markup_type.label_tag}} {{ form.body_markup_type }} </li>
+    <li>
+        <button class="submitBtn" type="submit">
+            <span>Save Changes</span>
+        </button>
+    </li>
+    </ul>
+</form>
+{% endblock %}
+

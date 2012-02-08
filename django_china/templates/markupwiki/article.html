@@ -1,0 +1,76 @@
+{% extends "markupwiki/base.html" %}
+
+{% block title %} {{article.title}} {% endblock %}
+
+{% block content_title %}Wiki / {{ article.display_title }}{% endblock %}
+
+{% block main %}
+
+<div class="container_12" id="main">
+  <div class="grid_12">
+
+{% block content %}
+
+{% if article and mod_form %}
+<div class="article_moderation">
+<form method="POST" action="{% url update_article_status article.title %}">
+    <ul>
+    <li>{{mod_form.status.label_tag}}  {{ mod_form.status }}</li>
+    <li>
+    <button class="updateBtn" type="submit">
+        <span>Update</span>
+    </button>
+    </li>
+    </ul>
+</form>
+<form method="POST" action="{% url rename_article article.title %}">
+    <ul>
+    {{ rename_form.as_ul}}
+    <li>
+    <button class="updateBtn" type="submit">
+        <span>Rename</span>
+    </button>
+    </li>
+    </ul>
+</form>
+</div>
+{% endif %}
+
+<h2 class="article_title">
+{% block article_title %}
+{% if article.section_name %}<a href="{% url view_article article.section_name %}">{{article.section_name}}</a> / {% endif %}
+
+    {% if article.is_deleted %} [deleted] {% endif %}
+    {% if not version.is_latest %} [revision {{version.number}}] {% endif %}
+
+{% endblock %}
+</h2>
+
+<div class="article_meta">
+{% block article_meta %}
+    {% if article.editable %}
+        <a href="{% url edit_article article.title %}">edit article</a> |
+    {% endif %}
+    {% if article %}
+        <a href="{% url article_history article.title %}">view history</a>
+    {% endif %}
+{% endblock %}
+</div>
+
+<div class="article_body">
+{% block article_body %}
+{% if article.is_deleted %}
+    <p>This article has been deleted.</p>
+{% else %}
+    {{version.body}}
+{% endif %}
+
+{% endblock %}
+</div>
+
+{% endblock content %}
+
+</div>
+</div>
+
+{% endblock main %}

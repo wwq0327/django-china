@@ -1,0 +1,76 @@
+{% extends "markupwiki/article.html" %}
+
+{% block article_title %}
+{{article.title}} [History]
+{% endblock %}
+
+{% block article_meta %}
+    <a href="{% url view_article article.title %}">view article</a>
+    {% if article.editable %}
+        <a href="{% url edit_article article.title %}">edit article</a> |
+    {% endif %}
+{% endblock %}
+
+{% block article_body %}
+
+    <form action="{% url revert article.title %}" method="post">
+
+        {% csrf_token %}
+
+        <label for="revert-version">Revert to</label>
+        <select name="revision" id="revert-version">
+            {% for version in versions reversed %}
+                {% if not forloop.first %}
+                    <option value="{{ version.number }}">
+                        {% if version.number == 0 %}
+                            Initial
+                        {% else %}
+                            {{ version.number }}
+                        {% endif %}
+                    </option>
+                {% endif %}
+            {% endfor %}
+        </select>
+
+        <button class="compareBtn" type="submit">
+            <span>Revert to version</span>
+        </button>
+
+    </form>
+
+<table>
+<thead> <tr>
+    <th>Version</th>
+    <th>Author</th>
+    <th>Timestamp</th>
+    <th>Comment</th>
+    <th>Compare From</th>
+    <th>Compare To</th>
+</tr></thead>
+<tbody>
+<form action="{% url article_diff article.title %}" method="GET">
+{% for version in versions %}
+<tr>
+    <td><a href="{{version.get_absolute_url}}">
+    {% ifequal version.number 0 %}
+        Initial
+    {% else %}
+        Revision {{version.number}}
+    {% endifequal %}
+    </a></td>
+    <td>{{version.author}}</td>
+    <td><a href="{{version.get_absolute_url}}">{{version.timestamp|date:"Y-m-d H:i:s"}}</a></td>
+    <td>{{version.comment|default:""}}</td>
+    <td><input type="radio" name="from" value="{{version.number}}"></td>
+    <td><input type="radio" name="to" value="{{version.number}}"></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+<button class="compareBtn" type="submit">
+    <span>Compare Selected Versions</span>
+</button>
+</form>
+
+{% endblock %}

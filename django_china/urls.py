@@ -21,6 +21,7 @@ urlpatterns += patterns('',
                         url(r'^accounts/', include('profiles.urls')),
                         url(r'^$', include('homepage.urls')),
                         url(r'^sites/', include('coolsites.urls')),
+                        url(r'^wiki/', include('markupwiki.urls')),
 
 )
 media_url = settings.MEDIA_URL.lstrip('/').rstrip('/')

@@ -143,6 +143,7 @@ INSTALLED_APPS = (
     'userena.contrib.umessages',
     'guardian',
     'easy_thumbnails',
+    'markupwiki',
 )
 
 # Userena settings
