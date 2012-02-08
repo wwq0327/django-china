@@ -18,6 +18,7 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += patterns('',
+                        url(r'^accounts/', include('profiles.urls')),
                         url(r'^$', include('homepage.urls')),
 
 )
