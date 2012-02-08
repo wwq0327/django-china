@@ -8,6 +8,9 @@ from django.core.urlresolvers import reverse
 
 from django.contrib.auth.models import User
 
+from sites.models import SiteCategory, CoolSites
+from sites.forms import SiteCategoryForm, CoolSitesForm
+
 def index(request):
     """酷站首页面"""
 
@@ -19,4 +22,8 @@ def index(request):
 def create(request):
     """登录用户可自行添加相关网站"""
 
-    pass
+    form = CoolSitesForm()
+
+    return render_to_response('sites/create.html',
+                              {'form': form},
+                              context_instance=RequestContext(request))
