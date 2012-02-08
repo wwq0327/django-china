@@ -25,7 +25,7 @@ class CoolSitesForm(forms.ModelForm):
     def save(self, user):
         model, created = CoolSites.objects.get_or_create(
             name = self.cleaned_data['name'],
-            sites = self.cleaned_data['site'],
+            site = self.cleaned_data['site'],
             category = self.cleaned_data['category'],
             about = self.cleaned_data['about'],
             creater = user

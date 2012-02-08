@@ -13,16 +13,23 @@ from coolsites.forms import SiteCategoryForm, CoolSitesForm
 
 def index(request):
     """酷站首页面"""
+    sc = SiteCategory.objects.all() ## site分类
 
     return render_to_response('coolsites/index.html',
-                              {},
+                              {'sc': sc},
                               context_instance=RequestContext(request))
 
 @login_required
 def create(request):
     """登录用户可自行添加相关网站"""
 
-    form = CoolSitesForm()
+    if request.method == 'POST':
+        form = CoolSitesForm(request.POST)
+        if form.is_valid():
+            model = form.save(request.user)
+            return HttpResponseRedirect(reverse('sites_index'))
+    else:
+        form = CoolSitesForm()
 
     return render_to_response('coolsites/create.html',
                               {'form': form},

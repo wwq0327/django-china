@@ -10,55 +10,27 @@
   </div>
 </div>
 
+{% if sc %}
+{% for c in sc %}
 <div class="container_12" id="main">
   <div class="grid_12">
-    <div class="site-fl">商业类</div>
+    <div class="site-fl">{{ c.name|safe }}</div>
     <div class="site-nr">
+    {% if c.coolsites_set.all %}
       <ul>
-        <li>site1</li>
-        <li>site1</li>
-        <li>site1</li>
-        <li>site1</li>
-        <li>site1</li>
-        <li>site1</li>
+        {% for site in c.coolsites_set.all %}
+        <li><a href="{{ site.site|safe }}" title="{{ site.about|linebreaksbr }}" target="_blank">{{ site.name|safe }}</a></li>
+        {% endfor %}
       </ul>
+    {% else %} 本分类暂时无相关网站 {% endif %}
     </div>
     </div>
-  </div>
-</div>
 
-<div class="container_12" id="main">
-  <div class="grid_12">
-    <div class="site-fl">商业类</div>
-    <div class="site-nr">
-      <ul>
-        <li>site1</li>
-        <li>site1</li>
-        <li>site1</li>
-        <li>site1</li>
-        <li>site1</li>
-        <li>site1</li>
-      </ul>
-    </div>
-    </div>
   </div>
 </div>
-
-<div class="container_12" id="main">
-  <div class="grid_12">
-    <div class="site-fl">商业类</div>
-    <div class="site-nr">
-      <ul>
-        <li>site1</li>
-        <li>site1</li>
-        <li>site1</li>
-        <li>site1</li>
-        <li>site1</li>
-        <li>site1</li>
-      </ul>
-    </div>
-    </div>
-  </div>
-</div>
+{% endfor %}
+{% else %}
+  <p>暂无分类<p>
+{% endif %}
 
 {% endblock %}
