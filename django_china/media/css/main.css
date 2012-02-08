@@ -141,10 +141,8 @@ a:hover {
 }
 
 #footer a {
-    color: white;
+    color: black;
 }
-
-
 
 /* form */
 form p label {
