@@ -32,7 +32,7 @@
               <li><a href="/">首页</a></li>
               <li><a href="#">社区</a></li>
               <li><a href="#">Wiki</a></li>
-              <li><a href="#">酷站</a></li>
+              <li><a href="{% url sites_index %}">酷站</a></li>
               {% if user.is_authenticated %}
               <li><a href="/people/{{ user.username }}/">个人页面</a></li>
               <li><a href="/accounts/signout/">退出</a></li>

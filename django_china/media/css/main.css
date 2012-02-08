@@ -144,6 +144,24 @@ a:hover {
     color: black;
 }
 
+/* sites */
+
+.site-fl {
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+}
+
+.site-nr ul {
+    margin: 0;
+}
+
+.site-nr ul li{
+    float: left;
+    margin: 5px 30px 5px 0;
+}
+
+
+
 /* form */
 form p label {
     display: inline-block;
