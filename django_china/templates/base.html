@@ -11,7 +11,7 @@
     <script type="text/javascript" src="{{ MEDIA_URL }}js/tops.js"></script>
     <script type="text/javascript" src="{{ MEDIA_URL }}js/pro.js"></script>
 
-    <title>{% block title %}{% endblock %} - NiceRead</title>
+    <title>{% block title %}{% endblock %} - Django-China.org</title>
   </head>
   <body>
     <div id="header">
@@ -46,14 +46,7 @@
       </div>
     </div>
 
-    <div class="container_12">
-      <div class="grid_9">
-        {% block content %}{% endblock %}
-      </div>
-      <div class="grid_3">
-        {% block sidebar %}{% endblock %}
-      </div>
-    </div>
+    {% block main %} {% endblock %}
 
     <div id="footer">
       {% include "_footer.html" %}
