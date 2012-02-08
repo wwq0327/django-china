@@ -64,7 +64,11 @@ li {
 }
 
 #footer ul li {
-    margin-left: 10px;
+    margin-left: 15px;
+}
+
+#footer ul {
+    list-style-type: square;
 }
 
 #content-title {
