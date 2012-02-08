@@ -16,17 +16,24 @@
   <body>
     <div id="header">
       <div class="container_12">
-        <div class="grid_2">
+        <div class="grid_3">
           <div id="logo"><a href="/">Django-China</a></div>
         </div>
 
+        <div class="grid_3">
+          <form action="/search"  method="get">
+            <input type="text" name="q" placeholder="搜索" />
+          </form>
+        </div>
+
         <div id="nav">
-        <div class="grid_10">
+        <div class="grid_6">
             <ul id="big_nav">
               <li><a href="/">首页</a></li>
+              <li><a href="#">社区</a></li>
+              <li><a href="#">Wiki</a></li>
+              <li><a href="#">酷站</a></li>
               {% if user.is_authenticated %}
-              <li><a href="/create/">添加</a></li>
-              <li><a href="/feed/tags/">Tag云</a></li>
               <li><a href="/people/{{ user.username }}/">个人页面</a></li>
               <li><a href="/accounts/signout/">退出</a></li>
               {% else %}
@@ -38,7 +45,9 @@
         </div>
       </div>
     </div>
-    <div class="container_12">
+
+    <div class="clear"></div>
+    <div class="container_12" id="main">
       <div class="grid_12">
         <div id="content-title">
         {% block content_title %}{% endblock %}
@@ -47,7 +56,7 @@
     </div>
 
     {% block main %} {% endblock %}
-
+    <div class="clear"></div>
     <div id="footer">
       {% include "_footer.html" %}
     </div>

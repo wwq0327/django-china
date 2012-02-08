@@ -1,6 +1,6 @@
 body {
-    background-color: white;
-    color: #333;
+    /*background: none repeat scroll 0 0 #316241;*/
+    color: white;
     font-size: 10pt;
     line-height: 20px;
     padding: 0;
@@ -11,12 +11,21 @@ body {
 #header {
     position: relative;
     padding: 20px 0 12px 0;
-    background: #eee;
-    border-bottom: dotted 1px #ccc;
+    background: #316241;
+    /*border-bottom: dotted 1px #ccc;*/
+}
+
+#main {
+    padding: 5px;
+    background: white;
+    color: #092e20;
+    margin: 5px auto;
+    border: 1px solid #ccc;
+    /*box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);*/
 }
 
 #nav ul#big_nav {
-    padding-top: 9px;
+    /*padding-top: 9px;*/
     font-size: 12pt;
 }
 
@@ -27,7 +36,7 @@ body {
 }
 
 #nav ul li {
-    padding-left: 30px;
+    padding-left: 5px;
     list-style: none;
     float: left;
 }
@@ -41,10 +50,17 @@ li {
     display: list-item;
 }
 
+.clear {
+    display: block;
+    height: 12px;
+    background-color: white;
+}
+
 #footer {
     padding: 15px 0 20px 0;
-    background: #eee;
-    border-top: dotted 1px #ccc;
+    background: #316241;
+    color: black;
+    /*border-top: dotted 1px #ccc;*/
 }
 
 #footer ul li {
@@ -77,30 +93,57 @@ li {
 }
 
 /* link */
+
 a {
-    /*color: #0069d6;*/
-    color: black;
     text-decoration: none;
+}
+
+
+#main a {
+    color: #AB5603;
     line-height: inherit;
     font-weight: inherit;
 }
 
+#main a:hover {
+    color: #234f32;
+    text-decoration: underline;
+    backgound-color: #234F32;
+}
+
 a:hover {
-    color: black;
-    /*color: #00438a;*/
     text-decoration: underline;
 }
 
 #big_nav a:hover {
-	text-decoration: none;
-	background-color: #ccc;
+    color: #ffc757;
+    text-decoration: none;
 }
+
+#big_nav a {
+    color: white;
+}
+
+
 
 /* logo */
 #logo {
     font-size: 2em;
     font-weight: bold;
 }
+
+#logo a {
+    color: white;
+}
+
+#logo a:hover {
+    text-decoration: none;
+}
+
+#footer a {
+    color: white;
+}
+
 
 
 /* form */
