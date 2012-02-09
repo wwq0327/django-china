@@ -128,8 +128,6 @@ a:hover {
     color: white;
 }
 
-
-
 /* logo */
 #logo {
     font-size: 2em;
@@ -192,6 +190,7 @@ form p label {
     width: 600px;
     height: 320px;
 }
+
 
 
 lable {
@@ -340,7 +339,6 @@ button:hover {
     font-size: 14px;
 }
 
-
 /* wiki */
 
 .wiki-table {
@@ -349,9 +347,20 @@ button:hover {
 
 .article_meta {
     float: right;
+    margin: 5px 0;
 
 }
 
 table {
     width: 100%;
+}
+
+
+#id_body {
+    clear: both;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #c9c9c9;
+    width: 930px;
+    height: 320px;
 }

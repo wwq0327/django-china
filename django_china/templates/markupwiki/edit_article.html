@@ -20,16 +20,13 @@
 {% block article_body %}
 <form method="POST" action=".">
     {% csrf_token %}
-    <ul>
-        <li>{{form.body}}</li>
-        <li>{{form.comment.label_tag}} {{ form.comment }} </li>
-        <li>{{form.body_markup_type.label_tag}} {{ form.body_markup_type }} </li>
-    <li>
+        <p class"wiki-text">{{form.body}}</p>
+        <p>备注：{{ form.comment }}
+        {{ form.body_markup_type }} <a href="http://qingbo.net/picky/502-markdown-syntax.html" target="_black" >MarkDown语法帮助</a></p>
         <button class="submitBtn" type="submit">
             <span>保存</span>
         </button>
-    </li>
-    </ul>
+
 </form>
 {% endblock %}
 
