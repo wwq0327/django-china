@@ -3,13 +3,12 @@
 {% block title %} {{article.title}} {% endblock %}
 
 {% block content_title %}Wiki /
-{% if article.section_name %}<a href="{% url view_article article.section_name %}">{{article.section_name}}</a> / {% endif %}
+{% if article.title %}<a href="{% url view_article article.title %}">{{article.title}}</a>{% endif %}
     {% if article.is_deleted %} [删除] {% endif %}
-    {% if not version.is_latest %} [版本 {{version.number}}] {% endif %}
+    {% if not version.is_latest %}[版本 {{version.number}}] {% endif %}
 {% endblock %}
 
 {% block main %}
-
 <div class="container_12" id="main">
 <div class="grid_12">
 
@@ -52,7 +51,6 @@
 {% endblock %}
 </div>
 
-<div class="article_body">
 {% block article_body %}
 {% if article.is_deleted %}
     <p>This article has been deleted.</p>
@@ -61,7 +59,6 @@
 {% endif %}
 
 {% endblock %}
-</div>
 
 {% endblock content %}
 

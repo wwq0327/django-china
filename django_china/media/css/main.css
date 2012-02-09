@@ -346,3 +346,12 @@ button:hover {
 .wiki-table {
     width: 100%;
 }
+
+.article_meta {
+    float: right;
+
+}
+
+table {
+    width: 100%;
+}

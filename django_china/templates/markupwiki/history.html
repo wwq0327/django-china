@@ -1,7 +1,7 @@
 {% extends "markupwiki/article.html" %}
 
 {% block content_title %}Wiki /
-{{article.title}} [历史]
+{% if article.title %}<a href="{% url view_article article.title %}">{{article.title}}</a>{% endif %} [历史]
 {% endblock %}
 
 {% block article_meta %}
@@ -11,7 +11,11 @@
     {% endif %}
 {% endblock %}
 
+
 {% block article_body %}
+
+<!--
+{#
 
     <form action="{% url revert article.title %}" method="post">
         <label for="revert-version">恢复到</label>
@@ -34,6 +38,7 @@
         </button>
 
     </form>
+#} -->
 
 <table class="wiki-table">
 <thead> <tr>
