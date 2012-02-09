@@ -4,7 +4,8 @@
       <div class="grid_9">
         {% block content %}{% endblock %}
       </div>
-      <div class="grid_3">
+      <div class="grid_3" id="grid_box">
+        <div><a href="{% url tc_create %}">发表新贴</a></div>
         {% block sidebar %}{% endblock %}
       </div>
     </div>

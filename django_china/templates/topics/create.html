@@ -1,0 +1,18 @@
+{% extends "topics/base.html" %}
+
+{% block title %}社区{% endblock %}
+
+{% block content_title %}社区 / 创建贴子{% endblock %}
+
+{% block content %}
+
+<form action="." method="post" class="create_form">
+  {{ form.as_p }}
+  <button type="submit">发布</button>
+</form>
+
+{% endblock %}
+
+{% block sidebar %}
+side
+{% endblock %}

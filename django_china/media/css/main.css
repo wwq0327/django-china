@@ -367,6 +367,6 @@ table {
 
 #grid_box {
     margin: 0;
-
-    border: 1px solid #ccc;
+    padding-left: 5px;
+    border-left: 1px solid #ccc;
 }

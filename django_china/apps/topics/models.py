@@ -13,7 +13,7 @@ class Node(models.Model):
         ordering = ['id']
 
     def __unicode__(self):
-        return "Node %s: %s" % (self.pk, self.name)
+        return self.name
 
     def get_absolute_url(self):
         return '/topics/node%s/' % self.pk

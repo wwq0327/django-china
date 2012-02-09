@@ -24,13 +24,13 @@ def create(request):
     """登录用户可自行添加相关网站"""
 
     if request.method == 'POST':
-        form = CoolSitesForm(request.POST)
+        form = TopicForm(request.POST)
         if form.is_valid():
             model = form.save(request.user)
-            return HttpResponseRedirect(reverse('sites_index'))
+            return HttpResponseRedirect(reverse('tc_index'))
     else:
-        form = CoolSitesForm()
+        form = TopicForm()
 
-    return render_to_response('coolsites/create.html',
+    return render_to_response('topics/create.html',
                               {'form': form},
                               context_instance=RequestContext(request))
