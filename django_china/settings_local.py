@@ -136,6 +136,7 @@ INSTALLED_APPS = (
     'profiles',
     'homepage',
     'coolsites',
+    'topics',
 
     #ext
     'south',
