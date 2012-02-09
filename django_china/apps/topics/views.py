@@ -34,3 +34,9 @@ def create(request):
     return render_to_response('topics/create.html',
                               {'form': form},
                               context_instance=RequestContext(request))
+def topic_detail(request, tc_pk):
+    topic = get_object_or_404(Topic, pk=tc_pk)
+
+    return render_to_response('topics/tc_detail.html',
+                              {'topic': topic},
+                              context_instance=RequestContext(request))

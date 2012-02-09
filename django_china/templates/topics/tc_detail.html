@@ -1,23 +1,20 @@
 {% extends "topics/base.html" %}
 
-{% block title %}社区{% endblock %}
+{% block title %}{{ topic.title }}{% endblock %}
 
-{% block content_title %}社区 / 所有贴子{% endblock %}
+{% block content_title %}<a href="{% url tc_index %}">社区</a> / 浏览贴子{% endblock %}
 
 {% block content %}
-{% if topics %}
-  {% for topic in topics %}
 <div class="topics_list">
   <div class="">
-    <a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a>
+    <h4>{{ topic.title }}</h4>
   </div>
   <div>由 {{ topic.creater.username }} 在 {{ topic.node.name }} 中发起</div>
   <div>发布时间：{{ topic.pub_date|date:"Y-m-d H:i" }}。</div>
 </div>
-  {% endfor %}
-{% else %}
-  暂无数据
-{% endif %}
+<div class="topic_content">
+  {{ topic.content_html|safe }}
+</div>
 {% endblock %}
 
 {% block sidebar %}

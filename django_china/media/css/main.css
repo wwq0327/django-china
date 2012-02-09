@@ -370,3 +370,10 @@ table {
     padding-left: 5px;
     border-left: 1px solid #ccc;
 }
+
+/* topics */
+
+.topics_list {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}

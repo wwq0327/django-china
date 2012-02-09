@@ -36,7 +36,7 @@ class Topic(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('topic_detail', (), {
+        return ('tc_detail', (), {
             'tc_pk': self.pk
             })
 
