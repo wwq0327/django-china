@@ -7,7 +7,7 @@
 {% block main %}
 
 <div class="container_12" id="main">
-  <div class="grid_12">
+<div class="grid_12">
 
 {% block content %}
 
@@ -18,17 +18,18 @@
     <li>{{mod_form.status.label_tag}}  {{ mod_form.status }}</li>
     <li>
     <button class="updateBtn" type="submit">
-        <span>Update</span>
+        <span>更新</span>
     </button>
     </li>
     </ul>
 </form>
+
 <form method="POST" action="{% url rename_article article.title %}">
     <ul>
     {{ rename_form.as_ul}}
     <li>
     <button class="updateBtn" type="submit">
-        <span>Rename</span>
+        <span>更新</span>
     </button>
     </li>
     </ul>
@@ -49,10 +50,10 @@
 <div class="article_meta">
 {% block article_meta %}
     {% if article.editable %}
-        <a href="{% url edit_article article.title %}">edit article</a> |
+        <a href="{% url edit_article article.title %}">编辑</a> |
     {% endif %}
     {% if article %}
-        <a href="{% url article_history article.title %}">view history</a>
+        <a href="{% url article_history article.title %}">历史</a>
     {% endif %}
 {% endblock %}
 </div>

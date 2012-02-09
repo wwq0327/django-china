@@ -2,16 +2,16 @@
 
 {% block article_title %}
     {% if article %}
-        Editing "{{title}}"
+        编辑 "{{title}}"
     {% else %}
-        Creating New Article "{{title}}"
+        创建 "{{title}}"
     {% endif %}
 {% endblock article_title %}
 
 {% block article_meta %}
     {% if article %}
-        <a href="{% url view_article article.title %}">view article</a> |
-        <a href="{% url article_history article.title %}">view history</a>
+        <a href="{% url view_article article.title %}">查看</a> |
+        <a href="{% url article_history article.title %}">历史</a>
     {% endif %}
 {% endblock %}
 
@@ -24,7 +24,7 @@
         <li>{{form.body_markup_type.label_tag}} {{ form.body_markup_type }} </li>
     <li>
         <button class="submitBtn" type="submit">
-            <span>Save Changes</span>
+            <span>保存</span>
         </button>
     </li>
     </ul>
