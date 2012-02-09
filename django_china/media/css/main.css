@@ -364,3 +364,9 @@ table {
     width: 930px;
     height: 320px;
 }
+
+#grid_box {
+    margin: 0;
+
+    border: 1px solid #ccc;
+}

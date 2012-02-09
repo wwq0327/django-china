@@ -1,0 +1,21 @@
+{% extends "topics/base.html" %}
+
+{% block title %}社区{% endblock %}
+
+{% block content_title %}社区 / 所有贴子{% endblock %}
+
+{% block content %}
+{% if topics %}
+  {% for t in topics %}
+  <div class="topic_list">
+    {{ t.title }}
+  </div>
+  {% endfor %}
+{% else %}
+  暂无数据
+{% endif %}
+{% endblock %}
+
+{% block sidebar %}
+side
+{% endblock %}

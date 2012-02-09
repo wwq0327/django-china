@@ -30,7 +30,7 @@
         <div class="grid_6">
             <ul id="big_nav">
               <li><a href="/">首页</a></li>
-              <li><a href="{% url tc_index %}">社区</a></li>
+              <li><a href="{% url tc_index  %}">社区</a></li>
               <li><a href="{% url view_article 'index' %}">Wiki</a></li>
               <li><a href="{% url sites_index %}">酷站</a></li>
               {% if user.is_authenticated %}
