@@ -27,7 +27,7 @@ def create(request):
         form = TopicForm(request.POST)
         if form.is_valid():
             model = form.save(request.user)
-            return HttpResponseRedirect(reverse('tc_index'))
+            return HttpResponseRedirect(model.get_absolute_url())
     else:
         form = TopicForm()
 
