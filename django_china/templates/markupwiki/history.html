@@ -1,7 +1,7 @@
 {% extends "markupwiki/article.html" %}
 
-{% block article_title %}
-{{article.title}} [History]
+{% block content_title %}Wiki /
+{{article.title}} [历史]
 {% endblock %}
 
 {% block article_meta %}
@@ -14,16 +14,13 @@
 {% block article_body %}
 
     <form action="{% url revert article.title %}" method="post">
-
-        {% csrf_token %}
-
         <label for="revert-version">恢复到</label>
         <select name="revision" id="revert-version">
             {% for version in versions reversed %}
                 {% if not forloop.first %}
                     <option value="{{ version.number }}">
                         {% if version.number == 0 %}
-                            Initial
+                            版本 0
                         {% else %}
                             {{ version.number }}
                         {% endif %}
@@ -33,19 +30,19 @@
         </select>
 
         <button class="compareBtn" type="submit">
-            <span>恢复</span>
+            <span>确认恢复</span>
         </button>
 
     </form>
 
-<table>
+<table class="wiki-table">
 <thead> <tr>
     <th>版本</th>
     <th>作者</th>
     <th>时间</th>
-    <th>回复</th>
-    <th>从</th>
-    <th>到</th>
+    <th>原因</th>
+    <th>当前</th>
+    <th>先前</th>
 </tr></thead>
 <tbody>
 <form action="{% url article_diff article.title %}" method="GET">
@@ -69,7 +66,7 @@
 </table>
 
 <button class="compareBtn" type="submit">
-    <span>恢复</span>
+    <span>版本比较</span>
 </button>
 </form>
 

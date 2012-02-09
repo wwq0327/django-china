@@ -1,12 +1,14 @@
 {% extends "markupwiki/article.html" %}
 
-{% block article_title %}
+{% block content_title %}Wiki /
+
     {% if article %}
         编辑 "{{title}}"
     {% else %}
         创建 "{{title}}"
     {% endif %}
-{% endblock article_title %}
+
+{% endblock %}
 
 {% block article_meta %}
     {% if article %}

@@ -2,7 +2,11 @@
 
 {% block title %} {{article.title}} {% endblock %}
 
-{% block content_title %}Wiki / {{ article.display_title }}{% endblock %}
+{% block content_title %}Wiki /
+{% if article.section_name %}<a href="{% url view_article article.section_name %}">{{article.section_name}}</a> / {% endif %}
+    {% if article.is_deleted %} [删除] {% endif %}
+    {% if not version.is_latest %} [版本 {{version.number}}] {% endif %}
+{% endblock %}
 
 {% block main %}
 
@@ -36,16 +40,6 @@
 </form>
 </div>
 {% endif %}
-
-<h2 class="article_title">
-{% block article_title %}
-{% if article.section_name %}<a href="{% url view_article article.section_name %}">{{article.section_name}}</a> / {% endif %}
-
-    {% if article.is_deleted %} [deleted] {% endif %}
-    {% if not version.is_latest %} [revision {{version.number}}] {% endif %}
-
-{% endblock %}
-</h2>
 
 <div class="article_meta">
 {% block article_meta %}

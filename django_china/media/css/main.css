@@ -340,3 +340,9 @@ button:hover {
     font-size: 14px;
 }
 
+
+/* wiki */
+
+.wiki-table {
+    width: 100%;
+}
