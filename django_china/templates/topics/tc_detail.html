@@ -30,15 +30,13 @@
   </div>
   {% for comment in comment_list %}
   <div class="comment-one">
-    <div class="comment-info">
-      <div class="tc_left user-img-s"><img src="{% gravatar_url comment.user.email 32 %}"></img></div>
+    <div class="tc_left user-img-s"><img src="{% gravatar_url comment.user.email 32 %}"></img></div>
       <div class="tc_right">
         <div>{{ comment.user.username }}</div>
         <div class="cc_reply">
           <a href="{% get_comment_permalink comment %}">#{{ forloop.counter }}</a> 于  {{ comment.submit_date|date:"Y-m-d H:i" }} 说道：
         </div>
         <div class="comment-content">{{ comment.comment|escape|linebreaks }}</div>
-    </div>
     </div>
   </div>
   {% endfor %}

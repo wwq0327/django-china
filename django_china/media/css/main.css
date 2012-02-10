@@ -484,3 +484,8 @@ table {
 .tc_right {
     padding-left: 40px;
 }
+
+.comment-one {
+    border-bottom: 1px dashed #ccc;
+    margin-bottom: 3px;
+}
