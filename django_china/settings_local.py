@@ -104,6 +104,16 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.csrf.CsrfResponseMiddleware',
     'userena.middleware.UserenaLocaleMiddleware',
+    'pagination.middleware.PaginationMiddleware'
+)
+
+# pagination
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request"
 )
 
 # userena
@@ -146,6 +156,7 @@ INSTALLED_APPS = (
     'guardian',
     'easy_thumbnails',
     'markupwiki',
+    'pagination',
 )
 
 # Userena settings
@@ -163,6 +174,8 @@ USERENA_MUGSHOT_SIZE = 140
 
 # Guardian
 ANONYMOUS_USER_ID = -1
+
+PAGINATION_DEFAULT_PAGINATION = 5
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

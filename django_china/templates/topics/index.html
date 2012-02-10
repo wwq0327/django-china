@@ -1,5 +1,7 @@
 {% extends "topics/base.html" %}
 {% load comments %}
+{% load i18n %}
+{% load pagination_tags %}
 {% block title %}社区{% endblock %}
 
 {% block content_title %}
@@ -20,6 +22,7 @@
 {% endif %}
 
 {% if topics %}
+  {% autopaginate topics %}
   {% for topic in topics %}
 <div class="topics_list">
   <div class=""><a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a></div>
@@ -32,6 +35,7 @@
 {% else %}
   暂无数据
 {% endif %}
+<div class="pagi">{% paginate %}</div>
 {% endblock %}
 
 {% block sidebar %}
