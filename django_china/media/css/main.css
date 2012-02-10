@@ -463,3 +463,24 @@ table {
 .pagi {
     text-align: center;
 }
+
+.tc_left {
+    float: left;
+    margin-right: 5px;
+}
+
+.user-img img {
+    padding: 5px;
+}
+
+.tcs_title {
+    font-weight: bold;
+}
+
+.user-img-s img {
+    padding-top: 4px;
+}
+
+.tc_right {
+    padding-left: 40px;
+}

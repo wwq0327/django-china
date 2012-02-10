@@ -26,12 +26,14 @@
   {% autopaginate topics %}
   {% for topic in topics %}
 <div class="topics_list">
-  <div class="user-img"><img src="{% gravatar_url topic.creater.email 40 %}"></img></div>
-  <div class=""><a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a></div>
-  {% get_comment_count for topics.topic topic.id as comment_count %}
-  <div class="topic-comment-count"><a href="{{ topic.get_absolute_url }}#c">{{ comment_count }}</a></div>
-  <div>由 {{ topic.creater.username }} 在 <a href="{{ topic.node.get_absolute_url }}">{{ topic.node.name }} </a>中发起</div>
-  <div>发布时间：{{ topic.pub_date|date:"Y-m-d H:i" }}。</div>
+  <div class="tc_left user-img"><img src="{% gravatar_url topic.creater.email 48 %}"></img></div>
+  <div class="tc_right">
+    <div class="tcs_title"><a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a></div>
+    {% get_comment_count for topics.topic topic.id as comment_count %}
+    <div class="topic-comment-count"><a href="{{ topic.get_absolute_url }}#c">{{ comment_count }}</a></div>
+    <div>由 {{ topic.creater.username }} 在 <a href="{{ topic.node.get_absolute_url }}">{{ topic.node.name }} </a>中发起</div>
+    <div>发布时间：{{ topic.pub_date|date:"Y-m-d H:i" }}。</div>
+  </div>
 </div>
   {% endfor %}
 {% else %}

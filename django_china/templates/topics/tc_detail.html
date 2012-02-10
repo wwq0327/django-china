@@ -1,4 +1,5 @@
 {% extends "topics/base.html" %}
+{% load gravatar %}
 {% load comments %}
 
 {% block title %}{{ topic.title }}{% endblock %}
@@ -8,9 +9,12 @@
 {% block content %}
 <div class="topics_list">
   <div class="tc_title">{{ topic.title }}</div>
+  <div class="tc_left user-img-s"><img src="{% gravatar_url topic.creater.email 32 %}"></img></div>
+  <div class="tc_right">
   <div class="tc_info">
     <div>由 {{ topic.creater.username }} 在 <a href="{{ topic.node.get_absolute_url }}">{{ topic.node.name }}</a> 中发起</div>
     <div>发布时间：{{ topic.pub_date|date:"Y-m-d H:i" }}。</div>
+  </div>
   </div>
 </div>
 <div class="topic_content">
@@ -27,10 +31,15 @@
   {% for comment in comment_list %}
   <div class="comment-one">
     <div class="comment-info">
-      <span><a href="{% get_comment_permalink comment %}">#{{ forloop.counter }}</a></span>
-            {{ comment.user.username }} 在 {{ comment.submit_date|date:"Y-m-d H:i" }} 说道：
-      </div>
-    <div class="comment-content">{{ comment.comment|escape|linebreaks }}</div>
+      <div class="tc_left user-img-s"><img src="{% gravatar_url comment.user.email 32 %}"></img></div>
+      <div class="tc_right">
+        <div>{{ comment.user.username }}</div>
+        <div class="cc_reply">
+          <a href="{% get_comment_permalink comment %}">#{{ forloop.counter }}</a> 于  {{ comment.submit_date|date:"Y-m-d H:i" }} 说道：
+        </div>
+        <div class="comment-content">{{ comment.comment|escape|linebreaks }}</div>
+    </div>
+    </div>
   </div>
   {% endfor %}
 </div>
