@@ -1,4 +1,5 @@
 {% extends "topics/base.html" %}
+{% load comments %}
 
 {% block title %}{{ topic.title }}{% endblock %}
 
@@ -15,6 +16,29 @@
 <div class="topic_content">
   {{ topic.content_html|safe }}
 </div>
+
+{% get_comment_list for topics.topic topic.id as comment_list %}
+{% get_comment_count for topics.topic topic.id as comment_count %}
+
+<div class="topic_list">
+  <div class="topic_count">
+    共有 {{ comment_count }} 条评论
+  </div>
+  {% for comment in comment_list %}
+  <div class="comment_one">
+    <div class="comment_info">{{ comment.user.username }} 在 {{ comment.submit_date|date:"Y-m-d H:i" }} 说道：</div>
+    <div class="comment_content">{{ comment.comment|escape|linebreaks }}</div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="comment-form">
+  <div class="cm-yousay">你想说 ...</div>
+  <div class="this-form">
+    {% render_comment_form for topics.topic topic.id %} <a name="#c"></a>
+  </div>
+</div>
+
 {% endblock %}
 
 {% block sidebar %}
