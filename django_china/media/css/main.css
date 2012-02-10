@@ -377,3 +377,27 @@ table {
     margin-bottom: 10px;
     border-bottom: 1px solid #ccc;
 }
+
+.topic-list-comment {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+
+.topic-count {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+.cm-yousay {
+    margin: 5px 0;
+    font-size: 1.2em;
+}
+
+.this-form textarea {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #c9c9c9;
+    width: 688px;
+    height: 168px;
+}

@@ -20,14 +20,17 @@
 {% get_comment_list for topics.topic topic.id as comment_list %}
 {% get_comment_count for topics.topic topic.id as comment_count %}
 
-<div class="topic_list">
-  <div class="topic_count">
-    共有 {{ comment_count }} 条评论
+<div class="topic-list-comment">
+  <div class="topic-count">
+    共有 {{ comment_count }} 条回复
   </div>
   {% for comment in comment_list %}
-  <div class="comment_one">
-    <div class="comment_info">{{ comment.user.username }} 在 {{ comment.submit_date|date:"Y-m-d H:i" }} 说道：</div>
-    <div class="comment_content">{{ comment.comment|escape|linebreaks }}</div>
+  <div class="comment-one">
+    <div class="comment-info">
+      <span><a href="{% get_comment_permalink comment %}">#{{ forloop.counter }}</a></span>
+            {{ comment.user.username }} 在 {{ comment.submit_date|date:"Y-m-d H:i" }} 说道：
+      </div>
+    <div class="comment-content">{{ comment.comment|escape|linebreaks }}</div>
   </div>
   {% endfor %}
 </div>
