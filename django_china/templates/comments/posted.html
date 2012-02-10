@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Comment Posted Successfully{% endblock %}
+{% block head %}谢谢你写下的评论！{% endblock %}
+{% block content %}
+<p>Thank you for contributing.</p>
+{% if object_pk %}
+<p><a href="/bookmark/{{ object.id }}/">
+View your comment</a></p>
+{% endif %}
+{% endblock %}

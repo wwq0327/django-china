@@ -1,0 +1,18 @@
+{% load comments %}
+{% if user.is_authenticated %}
+
+<form action="{% comment_form_target %}" method="post" class="comment">
+
+<textarea id="id_comment" name="comment" style="overflow: hidden; height: 80px;"></textarea></p>
+  {% for hidden in form.hidden_fields %}
+    {{ hidden }}
+  {% endfor %}
+<input type="hidden" name="next" value="{{ subject.get_absolute_url }}" />
+<span class="btnw"><button type="submit">贴上去</button> </span>
+</form>
+
+{% else %}
+
+<p> 你需要 <a href="/accounts/login/">登录</a> 才能进行评论。</p>
+
+{% endif %}
