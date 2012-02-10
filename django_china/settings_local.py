@@ -157,6 +157,7 @@ INSTALLED_APPS = (
     'easy_thumbnails',
     'markupwiki',
     'pagination',
+    'django_gravatar',
 )
 
 # Userena settings

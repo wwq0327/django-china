@@ -1,4 +1,5 @@
 {% extends "topics/base.html" %}
+{% load gravatar %}
 {% load comments %}
 {% load i18n %}
 {% load pagination_tags %}
@@ -25,6 +26,7 @@
   {% autopaginate topics %}
   {% for topic in topics %}
 <div class="topics_list">
+  <div class="user-img"><img src="{% gravatar_url topic.creater.email 40 %}"></img></div>
   <div class=""><a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a></div>
   {% get_comment_count for topics.topic topic.id as comment_count %}
   <div class="topic-comment-count"><a href="{{ topic.get_absolute_url }}#c">{{ comment_count }}</a></div>
