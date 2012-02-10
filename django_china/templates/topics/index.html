@@ -21,5 +21,16 @@
 {% endblock %}
 
 {% block sidebar %}
-side
+
+<div class="topic-box">
+  <div class="box-title">讨论节点</div>
+  <div class="box-content">
+    <ul>
+      {% for node in nodes %}
+      <li><a href="{{ node.get_absolute_url }}">{{ node.name }} </a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
 {% endblock %}

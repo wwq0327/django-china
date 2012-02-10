@@ -401,3 +401,23 @@ table {
     width: 688px;
     height: 168px;
 }
+
+.topic-box {
+    margin: 5px 0;
+}
+
+.box-title {
+    border-bottom: 1px solid #ccc;
+}
+
+.box-content ul {
+    margin: 2px 0;
+}
+
+.box-content li {
+    margin: 0;
+    padding-right: 15px;
+    list-style-type: none;
+    float: left;
+    font-size: 12px;
+}

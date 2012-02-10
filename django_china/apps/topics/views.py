@@ -14,9 +14,13 @@ from topics.forms import TopicForm
 def index(request):
     """酷站首页面"""
     topics = Topic.objects.all() ## site分类
+    nodes = Node.objects.all()
 
     return render_to_response('topics/index.html',
-                              {'topics': topics},
+                              {
+                                  'topics': topics,
+                                  'nodes': nodes,
+                               },
                               context_instance=RequestContext(request))
 
 @login_required
