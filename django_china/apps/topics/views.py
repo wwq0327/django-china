@@ -23,6 +23,17 @@ def index(request):
                                },
                               context_instance=RequestContext(request))
 
+def node_topics(request, node_pk):
+    nodes = Node.objects.all()
+    node = get_object_or_404(Node, pk=node_pk)
+    topics = node.topic_set.all()
+
+    return render_to_response('topics/index.html',
+                              {'nodes': nodes,
+                               'topics': topics,
+                               'is_node': node},
+                              context_instance=RequestContext(request))
+
 @login_required
 def create(request):
     """登录用户可自行添加相关网站"""

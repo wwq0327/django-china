@@ -421,3 +421,14 @@ table {
     float: left;
     font-size: 12px;
 }
+
+.node-box {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.node-title {
+    font-size: 13pt;
+}
+

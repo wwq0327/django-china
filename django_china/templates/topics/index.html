@@ -2,9 +2,23 @@
 
 {% block title %}社区{% endblock %}
 
-{% block content_title %}<a href="{% url tc_index %}">社区</a> / 所有贴子{% endblock %}
+{% block content_title %}
+  <a href="{% url tc_index %}">社区</a> /
+{% if not is_node %}
+  <a href="{% url tc_index %}">所有贴子</a>
+{% else %}
+  <a href="{{ is_node.get_absolute_url }}">{{ is_node.name }}</a>
+{% endif %}
+{% endblock %}
 
 {% block content %}
+{% if is_node %}
+  <div class="node-box">
+    <div class="node-title">{{ is_node.name }} 共有 {{ topics.count }} 个主题讨论</div>
+    <div class="node-about">{{ is_node.about }}</div>
+  </div>
+{% endif %}
+
 {% if topics %}
   {% for topic in topics %}
 <div class="topics_list">
