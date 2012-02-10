@@ -389,6 +389,15 @@ table {
     font-weight: bold;
 }
 
+.tc_title {
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+.tc_info {
+    color: #666666;
+}
+
 .cm-yousay {
     margin: 5px 0;
     font-size: 1.2em;
@@ -432,3 +441,21 @@ table {
     font-size: 13pt;
 }
 
+.node-about {
+    color: #666666;
+}
+
+.post-topic button {
+    margin: 0 auto;
+}
+
+.topic-comment-count {
+    color: white;
+    /*background-color: #316241;*/
+    padding: 5px auto;
+    font-size: 12pt;
+    width: 22px;
+    height: 22px;
+    float: right;
+    font-align: center;
+}

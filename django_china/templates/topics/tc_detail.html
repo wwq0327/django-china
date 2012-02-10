@@ -7,11 +7,11 @@
 
 {% block content %}
 <div class="topics_list">
-  <div class="">
-    <h4>{{ topic.title }}</h4>
+  <div class="tc_title">{{ topic.title }}</div>
+  <div class="tc_info">
+    <div>由 {{ topic.creater.username }} 在 <a href="{{ topic.node.get_absolute_url }}">{{ topic.node.name }}</a> 中发起</div>
+    <div>发布时间：{{ topic.pub_date|date:"Y-m-d H:i" }}。</div>
   </div>
-  <div>由 {{ topic.creater.username }} 在 {{ topic.node.name }} 中发起</div>
-  <div>发布时间：{{ topic.pub_date|date:"Y-m-d H:i" }}。</div>
 </div>
 <div class="topic_content">
   {{ topic.content_html|safe }}
