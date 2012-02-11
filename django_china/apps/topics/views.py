@@ -49,9 +49,29 @@ def create(request):
     return render_to_response('topics/create.html',
                               {'form': form},
                               context_instance=RequestContext(request))
+@login_required
+def topic_edit(request, t_pk):
+    topic = get_object_or_404(Topic, pk=t_pk)
+
+    if request.user != topic.creater:
+        return HttpResponseForbidden()
+    if request.method == 'POST':
+        form = TopicForm(instance=topic, data=request.POST)
+        if form.is_valid():
+            model = form.save(request.user)
+            return HttpResponseRedirect(model.get_absolute_url())
+    else:
+        form = TopicForm(instance=topic)
+
+    return render_to_response('topics/create.html',
+                              {'form': form},
+                              context_instance=RequestContext(request))
+
 def topic_detail(request, tc_pk):
     topic = get_object_or_404(Topic, pk=tc_pk)
+    is_edit = request.user.is_authenticated() and  request.user == topic.creater
 
     return render_to_response('topics/tc_detail.html',
-                              {'topic': topic},
+                              {'topic': topic,
+                               'is_edit': is_edit},
                               context_instance=RequestContext(request))

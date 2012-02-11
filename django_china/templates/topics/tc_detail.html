@@ -16,7 +16,12 @@
   <div class="tc_left user-img-s"><img src="{% gravatar_url topic.creater.email 32 %}"></img></div>
   <div class="tc_right">
   <div class="tc_info">
-    <div>由 <a href="{% url p_index topic.creater.username %}">{{ topic.creater.username }} </a>在 <a href="{{ topic.node.get_absolute_url }}">{{ topic.node.name }}</a> 中发起</div>
+    <div>
+      由 <a href="{% url p_index topic.creater.username %}">{{ topic.creater.username }} </a>在 <a href="{{ topic.node.get_absolute_url }}">{{ topic.node.name }}</a> 中发起
+      {% if is_edit %}
+      <a href="{% url tc_edit topic.pk %}">编辑主题</a>
+      {% endif %}
+    </div>
     <div>发布于{{ topic.pub_date|timesince }}前, {% if comment_count %}最后回复于{{ topic.last_reply|timesince }}前{% else %}暂无回复{% endif %}</div>
   </div>
   </div>
@@ -33,7 +38,16 @@
   <div class="comment-one">
     <div class="tc_left user-img-s"><img src="{% gravatar_url comment.user.email 32 %}"></img></div>
       <div class="tc_right">
-        <div><a href="{% url p_index comment.user.username %}">{{ comment.user.username }}</a></div>
+        <div>
+          <a href="{% url p_index comment.user.username %}">{{ comment.user.username }}</a>
+<!--
+          {#
+          {% if request.user == comment.user %}
+          [<a href="{% url comments-delete comment.id %}">删除回复</a>]
+          {% endif %}
+          #}
+-->
+        </div>
         <div class="cc_reply">
           <a href="{% get_comment_permalink comment %}">#{{ forloop.counter }}</a> 于  {{ comment.submit_date|timesince }}前说道：
         </div>

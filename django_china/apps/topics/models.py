@@ -47,7 +47,7 @@ class Topic(models.Model):
             })
 
     def save(self, *args, **kwargs):
-        if not self.pk:
+        if self.pk is None:
             self.last_reply = datetime.datetime.now()
 
         self.content_html = markdown.markdown(self.content)
@@ -60,6 +60,8 @@ class Topic(models.Model):
 
     ##     return self.node.all().count()
 
+# 让comment 与 topic通信，当有新的评论产生后，
+# 则在topic中修改最后回复时间
 def last_reply(sender, comment, **kwargs):
     if comment.is_public:
         t = Topic.objects.get(pk=comment.object_pk)
