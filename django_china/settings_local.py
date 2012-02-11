@@ -163,7 +163,8 @@ INSTALLED_APPS = (
 
 # Userena settings
 #LOGIN_REDIRECT_URL = '/accounts/%(username)s/'
-USERENA_SIGNIN_REDIRECT_URL = '/people/%(username)s/'
+#USERENA_SIGNIN_REDIRECT_URL = '/people/%(username)s/'
+USERENA_SIGNIN_REDIRECT_URL = '/topics/'
 LOGIN_URL = '/accounts/signin/'
 LOGOUT_URL = '/accounts/signout/'
 AUTH_PROFILE_MODULE = 'profiles.Profile'
