@@ -1,4 +1,4 @@
-$('html').ajaxSend(function(event, xhr, settings) {
+jQuery('html').ajaxSend(function(event, xhr, settings) {
     function getCookie(name) {
         var cookieValue = null;
         if (document.cookie && document.cookie != '') {
@@ -20,10 +20,20 @@ $('html').ajaxSend(function(event, xhr, settings) {
     }
 });
 
-$(document).ready(function() {
-	$('#big_nav a').hover(function () {
-		$(this).addClass('hover');
-	}, function() {
-		$(this).removeClass('hover');
-	});
+jQuery(document).ready(function($) {
+        $('#big_nav a').hover(function () {
+                $(this).addClass('hover');
+        }, function() {
+                $(this).removeClass('hover');
+        });
+});
+
+jQuery(document).ready(function($) {
+    $("form.comment").submit(function() {
+        var comment = $("#id_comment").val();
+        if (!comment || comment.length < 4) {
+            alert("回复不能为空或少于4字符！");
+            return false;
+        }
+    });
 });

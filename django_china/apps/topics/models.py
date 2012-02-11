@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Node(models.Model):
     name = models.CharField(max_length=50)
     about = models.TextField()
-    pub_date = models.DateTimeField(auto_now=True)
+    pub_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['id']
@@ -24,9 +24,9 @@ class Topic(models.Model):
     content_html = models.TextField(editable=False)
     creater = models.ForeignKey(User)
     node = models.ForeignKey(Node)
-    pub_date = models.DateTimeField(auto_now=True)
-    updated_date = models.DateTimeField(auto_now_add=True)
-    last_reply_date = models.DateTimeField(auto_now_add=True)
+    pub_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+    last_reply = models.DateTimeField(editable=False, null=True, blank=True)
 
     class Meta:
         ordering = ['-id']
@@ -44,8 +44,8 @@ class Topic(models.Model):
         self.content_html = markdown.markdown(self.content)
         super(Topic, self).save(*args, **kwargs)
 
-    def _get_topic_num(self):
-        return self.all().count()
+    ## def _get_topic_num(self):
+    ##     return self.all().count()
 
     ## def _get_topic_node_num(self, node_pk):
 
