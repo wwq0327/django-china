@@ -1,8 +1,14 @@
 # -*- coding: utf-8 -*-
 
+import datetime
 import markdown
+
 from django.db import models
 from django.contrib.auth.models import User
+
+from django.contrib.comments.models import Comment
+from django.contrib.comments.signals import comment_was_posted
+#from topics.signals import last_reply
 
 class Node(models.Model):
     name = models.CharField(max_length=50)
@@ -29,7 +35,7 @@ class Topic(models.Model):
     last_reply = models.DateTimeField(editable=False, null=True, blank=True)
 
     class Meta:
-        ordering = ['-id']
+        ordering = ['-last_reply']
 
     def __unicode__(self):
         return "Topic %s: %s" % (self.node.name, self.title)
@@ -41,6 +47,9 @@ class Topic(models.Model):
             })
 
     def save(self, *args, **kwargs):
+        if not self.pk:
+            self.last_reply = datetime.datetime.now()
+
         self.content_html = markdown.markdown(self.content)
         super(Topic, self).save(*args, **kwargs)
 
@@ -50,3 +59,11 @@ class Topic(models.Model):
     ## def _get_topic_node_num(self, node_pk):
 
     ##     return self.node.all().count()
+
+def last_reply(sender, comment, **kwargs):
+    if comment.is_public:
+        t = Topic.objects.get(pk=comment.object_pk)
+        t.last_reply = comment.submit_date
+        t.save()
+
+comment_was_posted.connect(last_reply, sender=Comment)
