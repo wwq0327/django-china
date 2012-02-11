@@ -1,15 +1,15 @@
 {% extends "people/base.html" %}
 {% load gravatar %}
 
-{% block title %}会员{% endblock %}
+{% block title %}{{ profile.user.username }} 的人个页面{% endblock %}
 
-{% block content_title %}会员： {{ profile.user.name }} {% endblock %}
+{% block content_title %}会员： {{ profile.user.username }} {% endblock %}
 
 {% block main %}
 
 <div class="container_12" id="main">
   <div class="grid_9">
-    <div>ID：{{ profile.user.name }}</div>
+    <div>ID：{{ profile.user.username }}</div>
     <div>来自：{{ profile.location }}</div>
     <div>Site: {{ profile.website }}</div>
     <div>简介：{{ profile.about_me }}</div>
