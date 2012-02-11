@@ -1,0 +1,25 @@
+{% extends "people/base.html" %}
+{% load gravatar %}
+
+{% block title %}会员{% endblock %}
+
+{% block content_title %}会员： {{ profile.user.name }} {% endblock %}
+
+{% block main %}
+
+<div class="container_12" id="main">
+  <div class="grid_9">
+    <div>ID：{{ profile.user.name }}</div>
+    <div>来自：{{ profile.location }}</div>
+    <div>Site: {{ profile.website }}</div>
+    <div>简介：{{ profile.about_me }}</div>
+  </div>
+  <div class="grid_3">
+    <div><img src="{% gravatar_url profile.user.email %}" /></div>
+    {% if user.username == profile.user.username %}
+      <div><a href="{% url userena_profile_detail user.username %}">帐号管理</a></div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock main %}
