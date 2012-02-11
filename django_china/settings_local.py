@@ -178,7 +178,7 @@ USERENA_MUGSHOT_SIZE = 140
 # Guardian
 ANONYMOUS_USER_ID = -1
 
-PAGINATION_DEFAULT_PAGINATION = 5
+PAGINATION_DEFAULT_PAGINATION = 10
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
