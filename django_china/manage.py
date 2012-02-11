@@ -1,4 +1,11 @@
 #!/usr/bin/env python
+import site
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+path = lambda *a: os.path.join(ROOT, *a)
+
+site.addsitedir(path('apps'))
+
 from django.core.management import execute_manager
 import imp
 try:
