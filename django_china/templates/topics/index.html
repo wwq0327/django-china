@@ -32,7 +32,7 @@
     {% get_comment_count for topics.topic topic.id as comment_count %}
     <div class="topic-comment-count"><a href="{{ topic.get_absolute_url }}#c">{{ comment_count }}</a></div>
     <div>由 <a href="{% url p_index topic.creater.username %}">{{ topic.creater.username }}</a> 在 <a href="{{ topic.node.get_absolute_url }}">{{ topic.node.name }} </a>中发起</div>
-    <div>发布于{{ topic.pub_date|timesince }}, 最后回复于{{ topic.last_reply|timesince }}前</div>
+    <div>发布于{{ topic.pub_date|timesince }}, {% if comment_count %}最后回复于{{ topic.last_reply|timesince }}前{% else %}暂时无回复。{% endif %}</div>
   </div>
 </div>
   {% endfor %}
