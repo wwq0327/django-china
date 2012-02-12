@@ -1,19 +1,25 @@
 # -*- coding: utf-8 -*-
 
+import logging
+
 from django.http import HttpResponseRedirect, Http404, HttpResponseForbidden, HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
+from django.views.decorators.cache import cache_page
 
 from django.contrib.auth.models import User
 
 from topics.models import Node, Topic, user_count, comments_count
 from topics.forms import TopicForm
 
+logger = logging.getLogger(__name__)
+
+@cache_page(60 * 15)
 def index(request):
-    """酷站首页面"""
-    topics = Topic.objects.all() ## site分类
+    """话题首页面"""
+    topics = Topic.objects.all()
     nodes = Node.objects.all()
 
     return render_to_response('topics/index.html',
@@ -25,6 +31,7 @@ def index(request):
                                },
                               context_instance=RequestContext(request))
 
+@cache_page(60 * 15)
 def node_topics(request, node_pk):
     nodes = Node.objects.all()
     node = get_object_or_404(Node, pk=node_pk)

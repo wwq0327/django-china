@@ -1,3 +1,5 @@
+{% load cache %}
+{% cache 500 sidebar %}
 <div class="topic-box">
   <div class="box-title">讨论节点</div>
   <div class="box-content">
@@ -20,3 +22,4 @@
   </div>
 </div>
 
+{% endcache %}

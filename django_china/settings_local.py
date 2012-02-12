@@ -24,6 +24,9 @@ DATABASES = {
     }
 }
 
+#CACHE_BACKEND = 'dummy:///'
+CACHE_BACKEND = 'db://my_cache_table'
+
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -97,6 +100,11 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    #cache
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
+
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -105,6 +113,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfResponseMiddleware',
     'userena.middleware.UserenaLocaleMiddleware',
     'pagination.middleware.PaginationMiddleware'
+
 )
 
 # pagination
@@ -192,7 +201,13 @@ LOGGING = {
         'mail_admins': {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler'
-        }
+        },
+        'file': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': path('django_china.log'),
+            'maxBytes': 1024 * 1024 *5, #5M
+            'backupCount': 5,
+            },
     },
     'loggers': {
         'django.request': {
