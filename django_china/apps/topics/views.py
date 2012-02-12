@@ -8,7 +8,7 @@ from django.core.urlresolvers import reverse
 
 from django.contrib.auth.models import User
 
-from topics.models import Node, Topic
+from topics.models import Node, Topic, user_count, comments_count
 from topics.forms import TopicForm
 
 def index(request):
@@ -20,6 +20,8 @@ def index(request):
                               {
                                   'topics': topics,
                                   'nodes': nodes,
+                                  'user_count': user_count(),
+                                  'comments_count': comments_count()
                                },
                               context_instance=RequestContext(request))
 
@@ -31,7 +33,9 @@ def node_topics(request, node_pk):
     return render_to_response('topics/index.html',
                               {'nodes': nodes,
                                'topics': topics,
-                               'is_node': node},
+                               'is_node': node,
+
+                               },
                               context_instance=RequestContext(request))
 
 @login_required

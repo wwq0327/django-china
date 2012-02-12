@@ -413,6 +413,7 @@ table {
 
 .topic-box {
     margin: 5px 0;
+    clear: both;
 }
 
 .box-title {
@@ -430,6 +431,11 @@ table {
     float: left;
     font-size: 12px;
 }
+
+.topic-count-box li {
+    margin-left: 0;
+}
+
 
 .node-box {
     margin-bottom: 5px;

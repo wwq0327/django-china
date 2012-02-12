@@ -1,0 +1,22 @@
+<div class="topic-box">
+  <div class="box-title">讨论节点</div>
+  <div class="box-content">
+    <ul>
+      {% for node in nodes %}
+      <li><a href="{{ node.get_absolute_url }}">{{ node.name }} </a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div class="topic-box">
+  <div class="box-title">社区统计</div>
+  <div class="topic-count-box">
+    <ul>
+      <li>总会员数：{{ user_count }}</li>
+      <li>总话题数：{{ topics.count }}</li>
+      <li>总回复数：{{ comments_count }}</li>
+    </ul>
+  </div>
+</div>
+

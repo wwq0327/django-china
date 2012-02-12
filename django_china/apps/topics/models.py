@@ -5,6 +5,7 @@ import markdown
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.models import ContentType
 
 from django.contrib.comments.models import Comment
 from django.contrib.comments.signals import comment_was_posted
@@ -53,12 +54,15 @@ class Topic(models.Model):
         self.content_html = markdown.markdown(self.content)
         super(Topic, self).save(*args, **kwargs)
 
-    ## def _get_topic_num(self):
-    ##     return self.all().count()
+def user_count():
+    '''获取总会员数'''
+    return User.objects.all().count()
 
-    ## def _get_topic_node_num(self, node_pk):
-
-    ##     return self.node.all().count()
+def comments_count():
+    '''获取总评论数'''
+    topic_type = ContentType.objects.get(app_label="topics", model="topic")
+    comments = Comment.objects.filter(content_type=topic_type)
+    return comments.count()
 
 # 让comment 与 topic通信，当有新的评论产生后，
 # 则在topic中修改最后回复时间
