@@ -32,9 +32,10 @@ def node_topics(request, node_pk):
 
     return render_to_response('topics/index.html',
                               {'nodes': nodes,
-                               'topics': topics,
+                               'topics': topics, ## 此处bug
                                'is_node': node,
-
+                               'user_count': user_count(),
+                               'comments_count': comments_count()
                                },
                               context_instance=RequestContext(request))
 
@@ -77,5 +78,8 @@ def topic_detail(request, tc_pk):
 
     return render_to_response('topics/tc_detail.html',
                               {'topic': topic,
-                               'is_edit': is_edit},
+                               'is_edit': is_edit,
+                               ## 'user_count': user_count(),
+                               ## 'comments_count': comments_count()
+                               },
                               context_instance=RequestContext(request))

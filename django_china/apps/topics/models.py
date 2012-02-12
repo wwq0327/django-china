@@ -34,6 +34,7 @@ class Topic(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     last_reply = models.DateTimeField(editable=False, null=True, blank=True)
+    comments_count = models.IntegerField(editable=False, null=True, blank=True, default=0)
 
     class Meta:
         ordering = ['-last_reply']
@@ -70,6 +71,7 @@ def last_reply(sender, comment, **kwargs):
     if comment.is_public:
         t = Topic.objects.get(pk=comment.object_pk)
         t.last_reply = comment.submit_date
+        t.comments_count += 1
         t.save()
 
 comment_was_posted.connect(last_reply, sender=Comment)
