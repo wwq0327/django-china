@@ -6,6 +6,7 @@ import markdown
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
+from django.db.models import F
 
 from django.contrib.comments.models import Comment
 from django.contrib.comments.signals import comment_was_posted
@@ -30,7 +31,7 @@ class Topic(models.Model):
     content = models.TextField()
     content_html = models.TextField(editable=False)
     creater = models.ForeignKey(User)
-    node = models.ForeignKey(Node)
+    node = models.ForeignKey(Node, verbose_name=u'节点') # verbose_name 字段自述名
     pub_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     last_reply = models.DateTimeField(editable=False, null=True, blank=True)
@@ -71,7 +72,7 @@ def last_reply(sender, comment, **kwargs):
     if comment.is_public:
         t = Topic.objects.get(pk=comment.object_pk)
         t.last_reply = comment.submit_date
-        t.comments_count += 1
+        t.comments_count = F('comments_count') + 1
         t.save()
 
 comment_was_posted.connect(last_reply, sender=Comment)
