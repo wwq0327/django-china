@@ -49,6 +49,45 @@ class Topic(models.Model):
             'tc_pk': self.pk
             })
 
+
+    ## ## 代参来自： http://djangosnippets.org/snippets/108/
+    ## def most_commented(self, num=5):
+    ##     """
+    ##     Returns the ``num`` objects with the highest comment counts,
+    ##     in order.
+
+    ##     Pass ``free=False`` if you're using the registered comment
+    ##     model (Comment) instead of the anonymous comment model
+    ##     (FreeComment).
+
+    ##     """
+    ##     from django.db import connection
+    ##     from django.contrib.comments import models as comment_models
+    ##     from django.contrib.contenttypes.models import ContentType
+    ##     ## if free:
+    ##     ##     comment_opts = comment_models.FreeComment._meta
+    ##     ## else:
+    ##     ##     comment_opts = comment_models.Comment._meta
+    ##     comment_opts = comment_models.Comment._meta
+    ##     ctype = ContentType.objects.get_for_model(self.model)
+    ##     query = """SELECT object_id, COUNT(*) AS score
+    ##     FROM %s
+    ##     WHERE content_type_id = %%s
+    ##     AND is_public = 1
+    ##     GROUP BY object_id
+    ##     ORDER BY score DESC""" % comment_opts.db_table
+
+    ##     cursor = connection.cursor()
+    ##     cursor.execute(query, [ctype.id])
+    ##     object_ids = [row[0] for row in cursor.fetchall()[:num]]
+
+    ##     # Use ``in_bulk`` here instead of an ``id__in`` filter, because ``id__in``
+    ##     # would clobber the ordering.
+    ##     object_dict = self.in_bulk(object_ids)
+
+    ##     return [object_dict[object_id] for object_id in object_ids]
+
+
     def save(self, *args, **kwargs):
         if self.pk is None:
             self.last_reply = datetime.datetime.now()
@@ -65,6 +104,18 @@ def comments_count():
     topic_type = ContentType.objects.get(app_label="topics", model="topic")
     comments = Comment.objects.filter(content_type=topic_type)
     return comments.count()
+
+def top_comments(num=10):
+    from django.contrib.comments import models as comment_models
+    comment_opts = comment_models.Comment._meta
+    comment_table_name = comment_opts.db_table
+
+    ctype = ContentType.objects.get(app_label="topics", model="topic")
+
+    return Topic.objects.extra(
+        select={
+            'c_count': 'SELECT COUNT(*) FROM %s WHERE content_type_id = %s' % (comment_table_name, ctype.id)},
+        ).order_by('-c_count')[0:num]
 
 # 让comment 与 topic通信，当有新的评论产生后，
 # 则在topic中修改最后回复时间

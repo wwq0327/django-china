@@ -12,6 +12,19 @@
 </div>
 
 <div class="topic-box">
+  <div class="box-title">热门讨论</div>
+  <div class="topic-count-box">
+    <ul>
+      {%if top_comments %}
+      {% for ct in top_comments %}
+        <li><a href="#">{{ ct.title }}</a></li>
+      {% endfor %}
+      {% endif %}
+    </ul>
+  </div>
+</div>
+
+<div class="topic-box">
   <div class="box-title">社区统计</div>
   <div class="topic-count-box">
     <ul>

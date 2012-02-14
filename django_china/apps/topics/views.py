@@ -11,7 +11,7 @@ from django.views.decorators.cache import cache_page
 
 from django.contrib.auth.models import User
 
-from topics.models import Node, Topic, user_count, comments_count
+from topics.models import Node, Topic, user_count, comments_count, top_comments
 from topics.forms import TopicForm
 
 logger = logging.getLogger(__name__)
@@ -27,7 +27,8 @@ def index(request):
                                   'topics': topics,
                                   'nodes': nodes,
                                   'user_count': user_count(),
-                                  'comments_count': comments_count()
+                                  'comments_count': comments_count(),
+                                  'top_comments': top_comments()
                                },
                               context_instance=RequestContext(request))
 
