@@ -1,0 +1,3 @@
+cd django_china
+./dev_manage.py runserver
+
