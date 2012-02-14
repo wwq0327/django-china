@@ -4,9 +4,11 @@
   <div class="box-title">讨论节点</div>
   <div class="box-content">
     <ul>
+      {% if nodes %}
       {% for node in nodes %}
       <li><a href="{{ node.get_absolute_url }}">{{ node.name }} </a></li>
       {% endfor %}
+      {% endif %}
     </ul>
   </div>
 </div>
@@ -17,7 +19,7 @@
     <ul>
       {%if top_comments %}
       {% for ct in top_comments %}
-        <li><a href="#">{{ ct.title }}</a></li>
+        <li><a href="{{ ct.get_absolute_url }}">* {{ ct.title }}</a></li>
       {% endfor %}
       {% endif %}
     </ul>
