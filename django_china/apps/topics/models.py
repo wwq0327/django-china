@@ -4,6 +4,8 @@ import datetime
 import markdown
 
 from django.db import models
+from django.db.models import Q
+
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import F
@@ -26,6 +28,10 @@ class Node(models.Model):
     def get_absolute_url(self):
         return '/topics/node%s/' % self.pk
 
+class TopicManager(models.Manager):
+    def get_related_topics(self, num=10, title=None):
+        return self.get_query_set().filter(Q(title__icontains=title)|Q(content__icontains=title))[0:num]
+
 class Topic(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
@@ -36,6 +42,8 @@ class Topic(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
     last_reply = models.DateTimeField(editable=False, null=True, blank=True)
     comments_count = models.IntegerField(editable=False, null=True, blank=True, default=0)
+
+    objects = TopicManager()
 
     class Meta:
         ordering = ['-last_reply']
@@ -48,6 +56,8 @@ class Topic(models.Model):
         return ('tc_detail', (), {
             'tc_pk': self.pk
             })
+
+
 
 
     ## ## 代参来自： http://djangosnippets.org/snippets/108/
@@ -114,7 +124,7 @@ def top_comments(num=10):
 
     return Topic.objects.extra(
         select={
-            'c_count': 'SELECT COUNT(*) FROM %s WHERE content_type_id = %s' % (comment_table_name, ctype.id)},
+            'c_count': 'SELECT COUNT(*) FROM %s WHERE content_type_id = %s AND is_public = 1' % (comment_table_name, ctype.id)},
         ).order_by('-c_count')[0:num]
 
 # 让comment 与 topic通信，当有新的评论产生后，

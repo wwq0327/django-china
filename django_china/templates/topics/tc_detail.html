@@ -68,4 +68,17 @@
 
 {% block sidebar %}
 
+<div class="topic-box">
+  <div class="box-title">讨论节点</div>
+  <div class="box-content">
+    <ul>
+      {% if related_topics %}
+      {% for tr in related_topics %}
+      <li><a href="{{ tr.get_absolute_url }}">{{ tr.title }} </a></li>
+      {% endfor %}
+      {% endif %}
+    </ul>
+  </div>
+</div>
+
 {% endblock %}
