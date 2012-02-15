@@ -83,12 +83,12 @@ def topic_edit(request, t_pk):
 def topic_detail(request, tc_pk):
     topic = get_object_or_404(Topic, pk=tc_pk)
     is_edit = request.user.is_authenticated() and  request.user == topic.creater
-    related_topics = Topic.objects.get_related_topics(title=topic.title)
+##    related_topics = Topic.objects.get_related_topics(title=topic.title)
 
     return render_to_response('topics/tc_detail.html',
                               {'topic': topic,
                                'is_edit': is_edit,
-                               'related_topics': related_topics
+##                               'related_topics': related_topics
                                ## 'user_count': user_count(),
                                ## 'comments_count': comments_count()
                                },

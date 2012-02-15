@@ -24,7 +24,9 @@ DATABASES = {
     }
 }
 
-#CACHE_BACKEND = 'dummy:///'
+if DEBUG:
+    CACHE_BACKEND = 'dummy:///'
+
 CACHE_BACKEND = 'db://my_cache_table'
 
 # Local time zone for this installation. Choices can be found here:
@@ -141,6 +143,16 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
+# haystack search
+HAYSTACK_SITECONF = 'django_china.search_sites'
+HAYSTACK_SEARCH_ENGINE = 'simple'
+
+## HAYSTACK_CONNECTIONS = {
+##     'default': {
+##         'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+##     },
+## }
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -159,7 +171,7 @@ INSTALLED_APPS = (
     'topics',
     'people',
 
-    #ext
+    #added,
     'south',
     'userena',
     'userena.contrib.umessages',
@@ -168,6 +180,7 @@ INSTALLED_APPS = (
     'markupwiki',
     'pagination',
     'django_gravatar',
+    'haystack',
 )
 
 # Userena settings
@@ -188,6 +201,8 @@ USERENA_MUGSHOT_SIZE = 140
 ANONYMOUS_USER_ID = -1
 
 PAGINATION_DEFAULT_PAGINATION = 10
+
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
